@@ -1,0 +1,9 @@
+<resources>
+  <string name="leku_app_name" translatable="false">Leku Demo</string>
+  <string name="google_maps_key"></string>
+  <string name="launch_map_picker" translatable="false">LAUNCH MAP LOCATION PICKER ACTIVITY</string>
+  <string name="launch_map_picker_with_pois" translatable="false">LAUNCH MAP WITH POIS</string>
+  <string name="leku_lib_version" translatable="false">version 5.1.0</string>
+    <string name="FireBrigade_app_name" />
+  <string name="Fire_Brigade_app_name" />
+</resources>

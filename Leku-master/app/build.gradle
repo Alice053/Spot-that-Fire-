@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+android {
+  compileSdkVersion 28
+
+  defaultConfig {
+    applicationId "com.schibsted.mappicker"
+    minSdkVersion 15
+    targetSdkVersion 28
+    versionCode 1
+    versionName "1.0"
+    vectorDrawables.useSupportLibrary = true
+  }
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  lintOptions {
+    disable 'ObsoleteLintCustomCheck'
+  }
+}
+
+detekt {
+  version = "1.0.0.RC7-3"
+  profile("main") {
+    input = "$projectDir/src/main/java"
+    config = "config/detekt/detekt-config.yml"
+    output = "$projectDir/build/reports/detekt/detekt.xml"
+    filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+  }
+}
+
+ktlint {
+  reporters = ["PLAIN", "CHECKSTYLE"]
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation 'com.android.support:appcompat-v7:28.0.0'
+  implementation project(':leku')
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
